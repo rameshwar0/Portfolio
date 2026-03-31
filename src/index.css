@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg-deep: #000000;
+  --bg-navy: #050505;
+  --accent-peach: #FF6A00; /* Fiery Orange */
+  --accent-blue: #00F0FF; /* Bright Cyan */
+  --text-primary: #FFFFFF;
+  --text-secondary: #909090;
+  --border-light: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.02);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  
+  --shadow-neon: 0 0 20px rgba(0, 240, 255, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.5px;
+}
+
+/* Hide scrollbar for cinematic feel */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+* {
+  scrollbar-width: none;
+}
+
+/* Glass Card System */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 2.5rem;
+  transition: transform 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: var(--shadow-neon);
+}
+
+/* Typography Utility */
+.heading-hero {
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.05;
+  letter-spacing: -2.5px;
+}
+
+.heading-section {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 3.5rem;
+  letter-spacing: -1.5px;
+}
+
+.text-body {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* Minimalist Button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 0.8rem 2rem;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.2);
+}
+
+/* Section Container */
+.section-container {
+  min-height: 100vh;
+  padding: 8rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Specific Layout Grids */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: stretch;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+/* Timeline Custom */
+.timeline-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent-blue) 0%, rgba(0, 240, 255, 0.1) 100%);
+  opacity: 0.8;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -20px;
+  top: 2rem;
+  width: 40px;
+  height: 1px;
+  background: var(--accent-blue);
+  box-shadow: 0 0 10px var(--accent-blue);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .heading-hero { font-size: 4rem; }
+  .grid-2 { gap: 2rem; }
+}
+
+@media (max-width: 768px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .heading-hero { font-size: 3rem; }
+  .heading-section { font-size: 2.5rem; }
+  .section-container { padding: 5rem 1.5rem; }
+}
