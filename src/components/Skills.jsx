@@ -1,78 +1,63 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { Gamepad2, Code2, Eye, Database, TrendingUp, Wrench } from 'lucide-react';
+import { skillsData } from '../data/mock';
+
+const skillCategories = [
+  { title: 'Game Engines', icon: Gamepad2, skills: skillsData.gameEngines, color: 'cyan' },
+  { title: 'Programming', icon: Code2, skills: skillsData.programming, color: 'blue' },
+  { title: 'Game Development', icon: Eye, skills: skillsData.gameDevelopment, color: 'cyan' },
+  { title: 'Backend & Networking', icon: Database, skills: skillsData.backendNetworking, color: 'blue' },
+  { title: 'Monetization & Analytics', icon: TrendingUp, skills: skillsData.monetizationAnalytics, color: 'cyan' },
+  { title: 'Tools & Platforms', icon: Wrench, skills: skillsData.toolsPlatforms, color: 'blue' },
+];
 
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: "Game Engines & Development",
-      skills: ["Unity", "Unreal Engine (Blueprints)", "3D Mobile Games", "AR / VR / Mixed Reality"]
-    },
-    {
-      title: "Programming",
-      skills: ["C#", ".NET (Basics)"]
-    },
-    {
-      title: "Backend & Networking",
-      skills: ["Firebase", "REST APIs", "Socket.io", "WebSockets"]
-    },
-    {
-      title: "Monetization & Analytics",
-      skills: ["Ads", "Analytics", "Crashlytics", "Notifications"]
-    },
-    {
-      title: "Tools & Platforms",
-      skills: ["Google Play Console", "App Store Connect", "Xcode", "Postman"]
-    }
-  ];
-
   return (
-    <section id="skills" className="section-container" style={{ alignItems: 'center', minHeight: 'auto', paddingBottom: '8rem' }}>
-      <h3 className="heading-section" style={{ textAlign: 'center' }}>Tech Stack & Arsenal</h3>
+    <section id="skills" className="py-20 relative bg-gradient-to-b from-transparent to-cyan-500/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Heading */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            Skills & <span className="gradient-text">Expertise</span>
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto" />
+        </div>
 
-      <div className="grid-2" style={{ width: '100%' }}>
-        {skillCategories.map((category, index) => (
-          <motion.div 
-            key={index}
-            className="glass-card"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: (index % 2) * 0.1 }}
-          >
-            <h4 style={{ color: 'var(--accent-blue)', marginBottom: '1.5rem', fontSize: '1.25rem', fontWeight: 600, letterSpacing: '0.5px' }}>{category.title}</h4>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
-              {category.skills.map((skill, i) => (
-                <span 
-                  key={i} 
-                  style={{
-                    padding: '0.5rem 1.2rem',
-                    background: 'rgba(255, 255, 255, 0.03)',
-                    border: '1px solid var(--border-light)',
-                    borderRadius: '40px',
-                    color: 'var(--text-primary)',
-                    fontSize: '0.9rem',
-                    fontWeight: 500,
-                    transition: 'all 0.3s ease'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(0, 240, 255, 0.4)';
-                    e.currentTarget.style.background = 'rgba(0, 240, 255, 0.1)';
-                    e.currentTarget.style.color = '#FFF';
-                    e.currentTarget.style.transform = 'scale(1.05)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--border-light)';
-                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
-                    e.currentTarget.style.color = 'var(--text-primary)';
-                    e.currentTarget.style.transform = 'scale(1)';
-                  }}
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        ))}
+        {/* Cards grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skillCategories.map((category, index) => {
+            const IconComponent = category.icon;
+            return (
+              <div
+                key={index}
+                className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 p-6 rounded-xl border border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 card-hover"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className={`p-2 rounded-lg ${
+                      category.color === 'cyan'
+                        ? 'bg-cyan-400/10 text-cyan-400'
+                        : 'bg-blue-400/10 text-blue-400'
+                    }`}
+                  >
+                    <IconComponent size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold text-white">{category.title}</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill, i) => (
+                    <span
+                      key={i}
+                      className="text-sm text-gray-300 bg-gray-700/50 px-3 py-1 rounded-full border border-gray-600/50 hover:border-cyan-500/50 hover:text-cyan-400 transition-all duration-200"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

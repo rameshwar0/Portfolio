@@ -1,71 +1,68 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-
-const experiences = [
-  {
-    role: "Unity 3D Programmer",
-    company: "IndiaNIC Infotech Limited",
-    period: "Sep 2024 - Current",
-    description: "• Developed and enhanced Unity mobile games (Android & iOS) across Match-3, Bubble Shooter, Racing, and Ludo genres, focusing on gameplay, UI/UX, and performance.\n• Integrated Firebase backend and live services (Auth, Firestore, Realtime DB, Analytics, Crashlytics, Cloud Messaging) along with Ads monetization.\n• Built a 3D AI-driven mixed reality character using Unreal Engine, including scene management, actor lifecycle, leveraging Blueprint Visual Scripting.\n• Working on a real-time multiplayer Housie (Tambola) game, implementing Socket.io/WebSockets.\n• Managed cross-platform builds and publishing using Google Play Console, App Store Connect, Xcode, and Postman."
-  },
-  {
-    role: "Game Developer",
-    company: "Samyak Infotech Pvt. Ltd.",
-    period: "July 2023 - Aug 2024",
-    description: "• Skillfully contributed to a range of projects, specializing in virtual reality and mixed reality development.\n• Currently developing a game for Apple VisionOS in VR and MR with Unity Game Engine.\n• Focused on a sniper-based game, merging immersive experiences with innovative gameplay mechanics."
-  },
-  {
-    role: "Software Developer Intern",
-    company: "Samyak Infotech Pvt. Ltd.",
-    period: "Jan 2023 - June 2023",
-    description: "• Developed expertise in .NET technology for web API development.\n• Designed and developed a captivating 3D endless runner game with Unity.\n• Revolutionized gameplay through integrated mobile gesture and dynamic AR face detection.\n• Orchestrated successful deployment of the game on the Google Play Store platform."
-  }
-];
+import { Building2, MapPin, Calendar } from 'lucide-react';
+import { experienceData } from '../data/mock';
 
 const Experience = () => {
   return (
-    <section id="experience" className="section-container" style={{ zIndex: 10 }}>
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-      >
-        <h3 className="heading-section">Experience</h3>
-        <p className="text-body" style={{ maxWidth: '600px', marginBottom: '4rem', fontSize: '1.25rem' }}>
-          Over the years, I've engineered complex systems, optimized real-time rendering, and led development across Unity and Unreal contexts. Here's my journey.
-        </p>
-      </motion.div>
+    <section id="experience" className="py-20 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Heading */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            Work <span className="gradient-text">Experience</span>
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto" />
+        </div>
 
-      <div style={{ position: 'relative', paddingLeft: '2.5rem', width: '100%', maxWidth: '900px', margin: '0 auto' }}>
-        {/* Sleek Timeline Line */}
-        <div className="timeline-line"></div>
+        {/* Timeline */}
+        <div className="relative">
+          {/* Vertical line */}
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400 to-blue-500 hidden md:block" />
 
-        {experiences.map((exp, index) => (
-          <motion.div 
-            key={index}
-            initial={{ opacity: 0, y: 40, filter: 'blur(5px)' }}
-            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            style={{ position: 'relative', marginBottom: '5rem' }}
-          >
-            {/* Timeline Node */}
-            <div className="timeline-dot"></div>
+          <div className="space-y-12">
+            {experienceData.map((exp, index) => (
+              <div key={exp.id} className="relative">
+                {/* Timeline dot */}
+                <div className="absolute left-6 w-5 h-5 bg-cyan-400 rounded-full border-4 border-[#0a0a0f] hidden md:block" style={{ top: '1.5rem' }} />
 
-            <div className="glass-card" style={{ padding: '2.5rem' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem' }}>
-                <h4 style={{ color: 'var(--text-primary)', fontSize: '1.8rem', fontWeight: 700, letterSpacing: '-0.5px' }}>{exp.role}</h4>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--accent-blue)', fontSize: '1.1rem', fontWeight: 600 }}>{exp.company}</span>
-                  <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', padding: '0.3rem 0.8rem', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border-light)', borderRadius: '20px' }}>{exp.period}</span>
+                {/* Card */}
+                <div className="md:ml-20 bg-gradient-to-br from-gray-900/50 to-gray-800/30 p-6 rounded-xl border border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 card-hover">
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-bold text-white mb-2">{exp.role}</h3>
+                      <div className="flex items-center gap-2 text-cyan-400 mb-2">
+                        <Building2 size={16} />
+                        <span className="font-semibold">{exp.company}</span>
+                      </div>
+                      <div className="flex flex-wrap items-center gap-4 text-gray-400 text-sm">
+                        <span className="flex items-center gap-1">
+                          <MapPin size={14} />
+                          {exp.location}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Calendar size={14} />
+                          {exp.duration}
+                        </span>
+                      </div>
+                    </div>
+                    <span className="text-xs font-semibold px-3 py-1 bg-cyan-400/10 text-cyan-400 rounded-full border border-cyan-400/30 whitespace-nowrap self-start">
+                      {index === 0 ? 'Current' : 'Past'}
+                    </span>
+                  </div>
+
+                  <ul className="space-y-2">
+                    {exp.responsibilities.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-gray-300 text-sm">
+                        <span className="text-cyan-400 mt-1 flex-shrink-0">▹</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-              
-              <div className="text-body" style={{ margin: 0, whiteSpace: 'pre-line' }}>{exp.description}</div>
-            </div>
-          </motion.div>
-        ))}
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

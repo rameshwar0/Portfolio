@@ -1,79 +1,82 @@
 import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { Gamepad2, ChevronDown } from 'lucide-react';
+import { personalInfo } from '../data/mock';
 
 const Hero = () => {
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
-
   return (
-    <section className="section-container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 2rem' }}>
-      <div className="grid-2" style={{ alignItems: 'center' }}>
-        
-        {/* Left Col - Text */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: 'easeOut' }}
-          style={{ zIndex: 10 }}
-        >
-          <div style={{ display: 'inline-block', padding: '0.4rem 1.2rem', borderRadius: '40px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'var(--accent-blue)', fontSize: '0.85rem', marginBottom: '2rem', letterSpacing: '2px', textTransform: 'uppercase', fontWeight: 600 }}>
-            Senior Architect
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+    >
+      {/* Grid background */}
+      <div className="absolute inset-0 grid-background opacity-30" />
+
+      {/* Animated blobs */}
+      <div className="absolute top-20 left-10 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center space-y-8">
+          {/* Icon */}
+          <div className="flex justify-center mb-6">
+            <div className="p-4 rounded-full border-2 border-cyan-400 bg-cyan-400/10">
+              <Gamepad2 size={48} className="text-cyan-400" />
+            </div>
           </div>
-          
-          <h1 className="heading-hero">
-            Rameshwar<br/>Ghanekar.
+
+          {/* Name */}
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+            <span className="gradient-text">{personalInfo.name}</span>
           </h1>
-          
-          <p className="text-body" style={{ maxWidth: '500px', fontSize: '1.25rem', marginBottom: '3rem', marginTop: '1rem' }}>
-            A Senior Unity & Unreal Developer specializing in high-performance gameplay, spatial computing, and scalable architectures.
+
+          {/* Title */}
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl text-gray-300 font-medium">
+            {personalInfo.title}
+          </h2>
+
+          {/* Tagline */}
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            {personalInfo.tagline}
           </p>
-          
-          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-            <a href="#projects" className="btn-primary" style={{ background: 'var(--text-primary)', color: '#000', borderColor: 'var(--text-primary)' }}>
-              Explore Work
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+            <a href="#projects" className="glow-button text-lg">
+              View Projects
             </a>
-            <a 
-              href="https://in.linkedin.com/in/rameshwar-ghanekar-9a037523a" 
-              target="_blank" 
-              rel="noreferrer"
-              className="btn-primary"
+            <a
+              href="#contact"
+              className="px-8 py-3 border-2 border-cyan-400 text-cyan-400 rounded-lg font-semibold hover:bg-cyan-400/10 transition-all duration-300 text-lg"
+            >
+              Get In Touch
+            </a>
+          </div>
+
+          {/* Social links */}
+          <div className="flex justify-center gap-6 pt-4">
+            <a
+              href={personalInfo.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 font-medium"
             >
               LinkedIn
             </a>
+            <span className="text-gray-600">|</span>
+            <a
+              href={`mailto:${personalInfo.email}`}
+              className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 font-medium"
+            >
+              Email Me
+            </a>
           </div>
-        </motion.div>
+        </div>
+      </div>
 
-        {/* Right Col - Portrait Image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, ease: 'easeOut', delay: 0.2 }}
-          style={{ position: 'relative', height: '70vh', display: 'flex', justifyContent: 'center', alignItems: 'center', perspective: '1000px' }}
-        >
-          <motion.img 
-            src="/hero-portrait.png" 
-            alt="Rameshwar Ghanekar"
-            style={{ 
-              y: y1,
-              width: '100%', 
-              height: '100%', 
-              objectFit: 'cover',
-              borderRadius: '24px',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.8)',
-              filter: 'contrast(1.1) brightness(0.9)'
-            }} 
-          />
-          
-          {/* Edge shadow overlay for blending into black background */}
-          <div style={{
-            position: 'absolute',
-            inset: 0,
-            borderRadius: '24px',
-            background: 'linear-gradient(to top, var(--bg-deep) 0%, transparent 40%), linear-gradient(to right, var(--bg-deep) 0%, transparent 30%), linear-gradient(to left, var(--bg-deep) 0%, transparent 30%)',
-            pointerEvents: 'none'
-          }}></div>
-        </motion.div>
-
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+        <span className="text-gray-500 text-sm">Scroll</span>
+        <ChevronDown size={20} className="text-cyan-400" />
       </div>
     </section>
   );
