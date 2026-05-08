@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Gamepad2 } from 'lucide-react';
+import { ExternalLink, Gamepad2, Smartphone, Apple } from 'lucide-react';
 import { projectsData } from '../data/mock';
 
 const categories = ['All', 'Arcade', 'Racing', 'Puzzle', 'Match-3', 'Endless Runner', 'AR/VR', 'Multiplayer', 'VR/MR'];
@@ -27,11 +27,10 @@ const Projects = () => {
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 ${
-                filter === cat
+              className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 ${filter === cat
                   ? 'bg-gradient-to-r from-cyan-400 to-blue-500 text-[#0a0a0f]'
                   : 'bg-gray-800/50 text-gray-300 border border-cyan-500/30 hover:border-cyan-500/50'
-              }`}
+                }`}
             >
               {cat}
             </button>
@@ -72,43 +71,33 @@ const Projects = () => {
               {/* Body */}
               <div className="p-6 flex flex-col flex-1">
                 <h3 className="text-xl font-bold text-white mb-2">{project.name}</h3>
-                <p className="text-gray-400 text-sm mb-4 leading-relaxed flex-1">{project.description}</p>
+                <p className="text-gray-400 text-sm mb-4 leading-relaxed line-clamp-3">
+                  {project.description}
+                </p>
 
                 {/* Tech stack */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {project.techStack.map((tech, i) => (
                     <span
                       key={i}
-                      className="text-xs text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 px-2 py-1 rounded-full"
+                      className="px-2 py-1 bg-cyan-400/10 text-cyan-300 text-xs rounded border border-cyan-500/30"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                {/* Features */}
-                {project.features && project.features.length > 0 && (
-                  <ul className="space-y-1 mb-4">
-                    {project.features.map((feature, i) => (
-                      <li key={i} className="text-gray-400 text-xs flex items-center gap-2">
-                        <span className="text-cyan-400">✦</span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
                 {/* Links */}
-                <div className="flex flex-wrap gap-3 mt-auto pt-2 border-t border-cyan-500/10">
+                <div className="flex gap-3 mt-auto">
                   {project.playStoreLink && (
                     <a
                       href={project.playStoreLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-sm text-gray-300 hover:text-cyan-400 transition-colors"
+                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-cyan-400/10 text-cyan-400 rounded-lg hover:bg-cyan-400/20 transition-colors duration-200 text-sm font-semibold"
                     >
-                      <ExternalLink size={14} />
-                      Play Store
+                      <Smartphone size={16} />
+                      <span>Play Store</span>
                     </a>
                   )}
                   {project.appStoreLink && (
@@ -116,21 +105,21 @@ const Projects = () => {
                       href={project.appStoreLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-sm text-gray-300 hover:text-cyan-400 transition-colors"
+                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-blue-400/10 text-blue-400 rounded-lg hover:bg-blue-400/20 transition-colors duration-200 text-sm font-semibold"
                     >
-                      <ExternalLink size={14} />
-                      App Store
+                      <Apple size={16} />
+                      <span>App Store</span>
                     </a>
                   )}
-                  {project.link && (
+                  {project.link && !project.playStoreLink && !project.appStoreLink && (
                     <a
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-sm text-gray-300 hover:text-cyan-400 transition-colors"
+                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-cyan-400/10 text-cyan-400 rounded-lg hover:bg-cyan-400/20 transition-colors duration-200 text-sm font-semibold"
                     >
-                      <ExternalLink size={14} />
-                      View More
+                      <ExternalLink size={16} />
+                      <span>View More</span>
                     </a>
                   )}
                 </div>
