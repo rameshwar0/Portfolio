@@ -1,60 +1,123 @@
 import React from 'react';
-import { Gamepad2, Code2, Eye, Database, TrendingUp, Wrench } from 'lucide-react';
-import { skillsData } from '../data/mock';
+import Tilt from 'react-parallax-tilt';
+import { Gamepad2, Code2, Eye, Database, TrendingUp, Wrench, Zap } from 'lucide-react';
+import { playHoverSound } from '../utils/soundEffects';
 
-const skillCategories = [
-  { title: 'Game Engines', icon: Gamepad2, skills: skillsData.gameEngines, color: 'cyan' },
-  { title: 'Programming', icon: Code2, skills: skillsData.programming, color: 'blue' },
-  { title: 'Game Development', icon: Eye, skills: skillsData.gameDevelopment, color: 'cyan' },
-  { title: 'Backend & Networking', icon: Database, skills: skillsData.backendNetworking, color: 'blue' },
-  { title: 'Monetization & Analytics', icon: TrendingUp, skills: skillsData.monetizationAnalytics, color: 'cyan' },
-  { title: 'Tools & Platforms', icon: Wrench, skills: skillsData.toolsPlatforms, color: 'blue' },
+const matrixData = [
+  {
+    category: 'Game Engines & Tech',
+    icon: Gamepad2,
+    skills: [
+      { name: 'Unity 3D/2D Engine', lvl: '95%' },
+      { name: 'Unreal Engine (Blueprints)', lvl: '82%' },
+      { name: 'Physics & Optimization', lvl: '90%' },
+    ],
+  },
+  {
+    category: 'Programming & Languages',
+    icon: Code2,
+    skills: [
+      { name: 'C# (Object-Oriented Architecture)', lvl: '94%' },
+      { name: '.NET Web API (Basics)', lvl: '76%' },
+      { name: 'Data Structures & OOP', lvl: '88%' },
+    ],
+  },
+  {
+    category: 'Extended Reality (AR/VR/MR)',
+    icon: Eye,
+    skills: [
+      { name: 'Apple VisionOS & Mixed Reality', lvl: '88%' },
+      { name: 'AR Face & Gesture Controls', lvl: '90%' },
+      { name: 'VR Sniper Mechanics', lvl: '85%' },
+    ],
+  },
+  {
+    category: 'Backend & Realtime Sync',
+    icon: Database,
+    skills: [
+      { name: 'Firebase (Auth, Firestore, DB)', lvl: '92%' },
+      { name: 'WebSockets & Socket.io Sync', lvl: '86%' },
+      { name: 'REST APIs & Postman', lvl: '90%' },
+    ],
+  },
+  {
+    category: 'Monetization & Analytics',
+    icon: TrendingUp,
+    skills: [
+      { name: 'Google Ads Integration', lvl: '90%' },
+      { name: 'Crashlytics & Firebase Analytics', lvl: '88%' },
+      { name: 'Push Notifications & Engagement', lvl: '85%' },
+    ],
+  },
+  {
+    category: 'Tools & Publishing Platforms',
+    icon: Wrench,
+    skills: [
+      { name: 'Google Play Console', lvl: '94%' },
+      { name: 'App Store Connect & Xcode', lvl: '90%' },
+      { name: 'Visual Studio & Git', lvl: '92%' },
+    ],
+  },
 ];
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 relative bg-gradient-to-b from-transparent to-cyan-500/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            Skills & <span className="gradient-text">Expertise</span>
+    <section id="skills" className="py-24 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-16 space-y-3">
+          <div className="inline-flex items-center gap-2 text-xs font-code text-cyan-400 font-bold uppercase tracking-widest">
+            <Zap size={14} /> TECHNICAL ARSENAL
+          </div>
+          <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-white tracking-tight">
+            Skills & <span className="gradient-text-figma">Competencies</span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto" />
+          <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mx-auto rounded-full" />
         </div>
 
-        {/* Cards grid */}
+        {/* Bento Grid Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillCategories.map((category, index) => {
-            const IconComponent = category.icon;
+          {matrixData.map((cat, idx) => {
+            const IconComp = cat.icon;
             return (
-              <div
-                key={index}
-                className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 p-6 rounded-xl border border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 card-hover"
+              <Tilt
+                key={idx}
+                tiltMaxAngleX={10}
+                tiltMaxAngleY={10}
+                perspective={900}
+                glareEnable={true}
+                glareMaxOpacity={0.15}
+                scale={1.02}
+                className="bento-card p-6 text-left"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className={`p-2 rounded-lg ${
-                      category.color === 'cyan'
-                        ? 'bg-cyan-400/10 text-cyan-400'
-                        : 'bg-blue-400/10 text-blue-400'
-                    }`}
-                  >
-                    <IconComponent size={24} />
+                <div onMouseEnter={playHoverSound}>
+                  <div className="flex items-center gap-3 mb-6 pb-3 border-b border-white/10">
+                    <div className="p-2.5 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
+                      <IconComp size={22} />
+                    </div>
+                    <h3 className="text-base font-heading font-bold text-white tracking-wide">
+                      {cat.category}
+                    </h3>
                   </div>
-                  <h3 className="text-xl font-bold text-white">{category.title}</h3>
+
+                  <div className="space-y-4">
+                    {cat.skills.map((sk, sIdx) => (
+                      <div key={sIdx} className="space-y-1.5">
+                        <div className="flex justify-between text-xs font-code">
+                          <span className="text-slate-300 font-medium">{sk.name}</span>
+                          <span className="text-cyan-400 font-bold">{sk.lvl}</span>
+                        </div>
+                        <div className="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-white/10 p-0.5">
+                          <div
+                            className="h-full bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 rounded-full transition-all duration-1000 shadow-[0_0_10px_rgba(0,240,255,0.4)]"
+                            style={{ width: sk.lvl }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, i) => (
-                    <span
-                      key={i}
-                      className="text-sm text-gray-300 bg-gray-700/50 px-3 py-1 rounded-full border border-gray-600/50 hover:border-cyan-500/50 hover:text-cyan-400 transition-all duration-200"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              </Tilt>
             );
           })}
         </div>

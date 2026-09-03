@@ -1,67 +1,81 @@
 import React from 'react';
-import { Building2, MapPin, Calendar } from 'lucide-react';
+import Tilt from 'react-parallax-tilt';
+import { Trophy, MapPin, Calendar, CheckCircle2 } from 'lucide-react';
 import { experienceData } from '../data/mock';
+import { playHoverSound, playQuestUnlockSound } from '../utils/soundEffects';
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            Work <span className="gradient-text">Experience</span>
+    <section id="experience" className="py-24 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-16 space-y-3">
+          <div className="inline-flex items-center gap-2 text-xs font-code text-cyan-400 font-bold uppercase tracking-widest">
+            <Trophy size={14} /> WORK HISTORY
+          </div>
+          <h2 className="text-4xl sm:text-5xl font-heading font-extrabold text-white tracking-tight">
+            Career <span className="gradient-text-figma">Timeline</span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto" />
+          <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mx-auto rounded-full" />
         </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400 to-blue-500 hidden md:block" />
-
-          <div className="space-y-12">
-            {experienceData.map((exp, index) => (
-              <div key={exp.id} className="relative">
-                {/* Timeline dot */}
-                <div className="absolute left-6 w-5 h-5 bg-cyan-400 rounded-full border-4 border-[#0a0a0f] hidden md:block" style={{ top: '1.5rem' }} />
-
-                {/* Card */}
-                <div className="md:ml-20 bg-gradient-to-br from-gray-900/50 to-gray-800/30 p-6 rounded-xl border border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 card-hover">
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-white mb-2">{exp.role}</h3>
-                      <div className="flex items-center gap-2 text-cyan-400 mb-2">
-                        <Building2 size={16} />
-                        <span className="font-semibold">{exp.company}</span>
-                      </div>
-                      <div className="flex flex-wrap items-center gap-4 text-gray-400 text-sm">
-                        <span className="flex items-center gap-1">
-                          <MapPin size={14} />
-                          {exp.location}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Calendar size={14} />
-                          {exp.duration}
-                        </span>
-                      </div>
+        {/* Timeline Stack */}
+        <div className="space-y-8 max-w-4xl mx-auto text-left">
+          {experienceData.map((exp, index) => (
+            <Tilt
+              key={exp.id}
+              tiltMaxAngleX={6}
+              tiltMaxAngleY={6}
+              perspective={1000}
+              glareEnable={true}
+              glareMaxOpacity={0.1}
+              className="bento-card p-6 sm:p-8 rounded-3xl"
+            >
+              <div onMouseEnter={playHoverSound}>
+                {/* Header Bar */}
+                <div className="flex flex-wrap items-center justify-between gap-4 pb-4 mb-6 border-b border-white/10">
+                  <div>
+                    <h3 className="text-2xl font-heading font-bold text-white tracking-wide mb-1">
+                      {exp.role} <span className="text-cyan-400 font-medium">@ {exp.company}</span>
+                    </h3>
+                    <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 font-code">
+                      <span className="flex items-center gap-1.5">
+                        <MapPin size={14} className="text-cyan-400" />
+                        {exp.location}
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <Calendar size={14} className="text-cyan-400" />
+                        {exp.duration}
+                      </span>
                     </div>
-                    <span className="text-xs font-semibold px-3 py-1 bg-cyan-400/10 text-cyan-400 rounded-full border border-cyan-400/30 whitespace-nowrap self-start">
-                      {index === 0 ? 'Current' : 'Past'}
-                    </span>
                   </div>
 
-                  <ul className="space-y-2">
-                    {exp.responsibilities.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2 text-gray-300 text-sm">
-                        <span className="text-cyan-400 mt-1 flex-shrink-0">▹</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                  <span
+                    className={`text-xs font-semibold px-4 py-1.5 rounded-full border font-code ${
+                      index === 0
+                        ? 'bg-green-500/10 text-green-400 border-green-500/30'
+                        : 'bg-cyan-500/10 text-cyan-400 border-cyan-500/30'
+                    }`}
+                  >
+                    {index === 0 ? 'CURRENT ROLE' : 'PREVIOUS ROLE'}
+                  </span>
+                </div>
+
+                {/* Key Accomplishments */}
+                <div className="space-y-2.5">
+                  {exp.responsibilities.map((resp, rIdx) => (
+                    <div
+                      key={rIdx}
+                      className="flex items-start gap-3 text-sm text-slate-300 font-light leading-relaxed"
+                    >
+                      <CheckCircle2 size={16} className="text-cyan-400 shrink-0 mt-1" />
+                      <span>{resp}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
+            </Tilt>
+          ))}
         </div>
       </div>
     </section>

@@ -1,124 +1,139 @@
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
+/* ==========================================
+   FIGMA DYNAMIC PORTFOLIO DESIGN SYSTEM
+   ========================================== */
+
+:root {
+  --bg-dark: #0b0d14;
+  --bg-bento: rgba(255, 255, 255, 0.04);
+  --bg-bento-hover: rgba(255, 255, 255, 0.08);
+  --border-bento: rgba(255, 255, 255, 0.08);
+  --border-bento-active: rgba(0, 240, 255, 0.4);
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-cyan: #00f0ff;
+  --accent-purple: #8b5cf6;
+  --accent-pink: #ff007f;
+  --gradient-figma: linear-gradient(135deg, #00f0ff 0%, #8b5cf6 50%, #ff007f 100%);
+}
+
 body {
-  background: #0a0a0f;
-  color: #ffffff;
-  font-family: 'IBM Plex Sans', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', sans-serif;
   overflow-x: hidden;
+  line-height: 1.6;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Rajdhani', sans-serif;
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Syne', sans-serif;
+  letter-spacing: -0.02em;
 }
 
-.neon-text {
-  text-shadow: 0 0 10px #00fff5, 0 0 20px #00fff5, 0 0 30px #00fff5;
+.font-code {
+  font-family: 'Fira Code', monospace;
 }
 
-.neon-border {
-  border: 2px solid #00fff5;
-  box-shadow: 0 0 10px #00fff5, inset 0 0 10px rgba(0, 255, 245, 0.1);
-}
-
-.glow-button {
-  background: linear-gradient(135deg, #0066ff 0%, #00fff5 100%);
-  border: none;
-  color: #0a0a0f;
-  font-weight: 600;
-  padding: 12px 32px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 102, 255, 0.4);
-  text-decoration: none;
-  display: inline-block;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 1rem;
-}
-
-.glow-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(0, 255, 245, 0.6);
-}
-
-.grid-background {
-  background-image:
-    linear-gradient(rgba(0, 255, 245, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 245, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
-}
-
-.card-hover {
-  transition: all 0.3s ease;
-}
-
-.card-hover:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 255, 245, 0.2);
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #00fff5 0%, #0066ff 100%);
+/* Figma Gradient Text */
+.gradient-text-figma {
+  background: var(--gradient-figma);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-html {
-  scroll-behavior: smooth;
+/* Figma Bento Box Card */
+.bento-card {
+  background: var(--bg-bento);
+  border: 1px solid var(--border-bento);
+  backdrop-filter: blur(20px);
+  border-radius: 1.75rem;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
+.bento-card:hover {
+  background: var(--bg-bento-hover);
+  border-color: var(--border-bento-active);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 240, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+/* Figma Pill Badge */
+.bento-badge {
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: var(--accent-cyan);
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Figma Primary Button */
+.figma-btn-primary {
+  background: linear-gradient(135deg, #00f0ff 0%, #8b5cf6 100%);
+  color: #0b0d14;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 25px rgba(0, 240, 255, 0.4);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.figma-btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 35px rgba(0, 240, 255, 0.7);
+}
+
+/* Figma Secondary Button */
+.figma-btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.figma-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  transform: translateY(-3px);
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0f;
+  background: #0b0d14;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #0066ff 0%, #00fff5 100%);
-  border-radius: 5px;
+  background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));
+  border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #00fff5 0%, #0066ff 100%);
-}
-
-@keyframes scroll-dot {
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateY(12px);
-    opacity: 0;
-  }
-}
-
-.animate-scroll-dot {
-  animation: scroll-dot 1.5s ease-in-out infinite;
-}
-
-@keyframes scroll-dot {
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateY(12px);
-    opacity: 0;
-  }
-}
-
-.animate-scroll-dot {
-  animation: scroll-dot 1.5s ease-in-out infinite;
+html {
+  scroll-behavior: smooth;
 }
