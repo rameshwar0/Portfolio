@@ -26,7 +26,15 @@ export const skillsData = {
   gameEngines: ["Unity", "Unreal Engine (Blueprints)"],
   programming: ["C#", ".NET (Basics)"],
   gameDevelopment: ["3D Mobile Games", "AR", "VR", "Mixed Reality"],
-  backendNetworking: ["Firebase", "REST APIs", "Socket.io", "WebSockets"],
+  backendNetworking: ["Node.js", "Express", "Socket.io", "Redis", "PostgreSQL", "Firebase", "REST APIs"],
+  ciDevops: [
+    "GitLab CI/CD",
+    "GitHub Actions",
+    "Unity Automated Builds (.apk & .aab)",
+    "Post-Unity Xcode Build (.ipa)",
+    "Google Cloud Platform (GCP)",
+    "AI Tools & Automation"
+  ],
   monetizationAnalytics: ["Ads Integration", "Analytics", "Crashlytics", "Push Notifications"],
   toolsPlatforms: ["Google Play Console", "App Store Connect", "Xcode", "Postman", "Visual Studio"],
 };
@@ -40,12 +48,13 @@ export const experienceData = [
     duration: "Sep 2024 - Present",
     responsibilities: [
       "Developed and optimized mobile games across Match-3, Bubble Shooter, Racing, and Ludo genres",
+      "Engineered web-based Unity CI/CD Configurator tool using AI tools: automated multi-platform builds (.apk & .aab, post-Unity Xcode to .ipa) with zero-touch auto-deployment to Google Play (Internal Testing) & Apple TestFlight via GCP service accounts & App Store Connect API",
       "Improved gameplay, UI/UX, and performance optimization",
       "Integrated Firebase services (Auth, Firestore, Realtime DB, Analytics, Crashlytics, Cloud Messaging)",
       "Implemented Ads monetization systems",
       "Modularized and restructured codebases for scalability",
       "Built AI-driven mixed reality character using Unreal Engine (Blueprints)",
-      "Developing real-time multiplayer Housie game using Socket.io & WebSockets",
+      "Built real-time multiplayer Housie game in Unity, engineering the complete backend using AI tools (Node.js, Socket.io, Redis, PostgreSQL)",
       "Managed Android & iOS builds using Play Console and App Store Connect",
     ],
   },
@@ -184,13 +193,21 @@ export const projectsData = [
     name: "Multiplayer Housie (Tambola) Game",
     category: "Multiplayer",
     description:
-      "Real-time multiplayer tambola game with live synchronization using Socket.io and WebSockets.",
-    techStack: ["Unity", "Socket.io", "WebSockets", "Firebase"],
+      "Real-time multiplayer Tambola game in Unity with a scalable backend engineered using AI tools for low-latency sync, distributed table locking, and anti-cheat validation.",
+    techStack: [
+      "Unity (C#)",
+      "Node.js",
+      "Socket.io",
+      "Redis",
+      "PostgreSQL",
+      "AI Tools"
+    ],
     features: [
-      "Real-time multiplayer system",
-      "Live player sync",
-      "Backend integration",
-      "End-to-end game development",
+      "Real-time multiplayer gameplay with synced number calling & dynamic ticket grids",
+      "Complete backend engineered using AI tools (Node.js, Express, Socket.io)",
+      "Distributed table locking with Redis & background queue workers",
+      "Authoritative server win-claim and Google Play / App Store IAP receipt validation",
+      "Deep link room invites with native Apple & Google authentication"
     ],
     images: ["https://customer-assets.emergentagent.com/job_ramesh-portfolio-2/artifacts/cpyzwc5g_Housie%20Tambola.png"],
   },
@@ -206,6 +223,23 @@ export const projectsData = [
       "Advanced interaction systems",
     ],
     images: ["https://images.unsplash.com/photo-1593508512255-86ab42a8e620?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwyfHxWUiUyMGdhbWluZ3xlbnwwfHx8fDE3NzgyMTQzNjl8MA&ixlib=rb-4.1.0&q=85"],
+  },
+  {
+    id: 9,
+    name: "Unity CI/CD Pipeline Configurator",
+    category: "Tools & DevOps",
+    description:
+      "A developer tool and pipeline generator built using modern AI tools to automate Unity multi-platform builds (.apk & .aab), post-Unity Xcode builds (.ipa), and zero-touch auto-deployment to Google Play & Apple TestFlight.",
+    techStack: ["JavaScript", "GitLab CI", "GitHub Actions", "Unity Batchmode", "Xcode CLI", "Google Cloud", "AI Tools"],
+    features: [
+      "Generates both Android .apk (testing) and .aab (store bundle) builds",
+      "Automated post-Unity secondary Xcode build pipeline to compile signed iOS .ipa",
+      "Zero-touch auto-deployment: publishes .aab to Google Play Internal Testing (via google-play-upload.js & GCP service account)",
+      "Automated iOS deployment to Apple TestFlight via App Store Connect API",
+      "Automated live store version queries (get-play-store-version.js & get-app-store-version.js) for auto build/version increments",
+      "Architected and accelerated using modern AI coding tools with interactive drag-and-drop repo setup guides",
+    ],
+    images: ["https://images.unsplash.com/photo-1618401471353-b98aedd04e11?crop=entropy&cs=srgb&fm=jpg&q=85"],
   },
 ];
 

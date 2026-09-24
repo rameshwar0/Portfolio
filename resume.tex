@@ -1,0 +1,169 @@
+\documentclass{resume} % Use the custom resume.cls style
+
+\usepackage[left=0.4 in,top=0.4in,right=0.4 in,bottom=0.4in]{geometry} % Document margins
+\newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}}
+\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+\name{Rameshwar Ghanekar} % Your name
+\address{+918269428474 \\ rameshwar.ghanekar05@gmail.com \\ Betul, MP}
+\address{\href{https://www.linkedin.com/in/rameshwar-ghanekar-9a037523a/}{Linkedin.com} \\ \href{https://portfolio.rameshwar-ghanekar05.workers.dev/}{Portfolio}} 
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	OBJECTIVE
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{OBJECTIVE}
+
+{Game Developer with 3+ years of experience in Unity, AR/VR/Mixed Reality, and mobile game development. Skilled in Unreal Engine, multiplayer systems, CI/CD build automation, Firebase backend integration, and Apple VisionOS projects, with a passion for building immersive, scalable gaming experiences and automated developer tooling using modern AI workflows.}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{SKILLS}
+
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{ @{} >{\bfseries}l @{\hspace{3.5ex}} l }
+Game Engines & - Unity, Unreal Engine (Blueprints) \\
+Game Development & - 3D Mobile Games, AR / VR / Mixed Reality \\
+Programming & - C\#, .NET (Basics) \\
+Backend \& Networking & - Node.js, Express, Socket.io, Redis, PostgreSQL, Firebase, REST APIs \\
+CI/CD \& DevOps & - GitLab CI/CD, GitHub Actions, Unity Batchmode (.apk/.aab), Xcode (.ipa) \\
+Monetization \& Analytics & - Ads, Analytics, Crashlytics, Notifications \\
+Tools \& Platforms & - Google Play Console, App Store Connect, Xcode, Postman, AI Coding Tools
+\end{tabular}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{EXPERIENCE}
+
+\textbf{Unity 3D Programmer} \hfill Sep 2024 - Current\\
+IndiaNIC Infotech Limited \hfill \textit{Ahmedabad}
+\begin{itemize}
+    \itemsep -3pt {}
+     \item Developed and enhanced \textbf{Unity mobile games (Android \& iOS)} across Match-3, Bubble Shooter, Racing, and Ludo genres, focusing on gameplay, UI/UX, and performance.
+     \item Engineered a web-based \textbf{Unity CI/CD Configurator} using \textbf{AI tools}: automated multi-platform builds for Android (\textbf{.apk} \& \textbf{.aab}) and iOS (\textbf{post-Unity Xcode build to .ipa}) with automated zero-touch deployment to \textbf{Google Play (Internal Testing)} and \textbf{Apple TestFlight} via GCP service accounts and App Store Connect API.
+     \item Integrated \textbf{Firebase backend and live services} (Auth, Firestore, Realtime DB, Analytics, Crashlytics, Cloud Messaging) along with \textbf{Ads monetization}.
+     \item Re-structured and modularized game codebases to improve \textbf{scalability, maintainability, and performance}.
+     \item Built a \textbf{3D AI-driven mixed reality character} using Unreal Engine, including scene management, actor lifecycle, leveraging \textbf{Blueprint Visual Scripting} for interactive dialogue and gameplay.
+     \item Built a real-time multiplayer \textbf{Housie (Tambola)} game in Unity; engineered the complete backend using \textbf{AI tools} (Node.js, Socket.io, Redis, PostgreSQL) for low-latency sync, distributed table locking, and anti-cheat validation.
+     \item Managed \textbf{cross-platform builds and publishing} using Google Play Console, App Store Connect, Xcode, and Postman.
+\end{itemize}
+
+\textbf{Game Developer} \hfill July 2023 - Aug 2024\\
+Samyak Infotech Pvt. Ltd. \hfill \textit{Ahmedabad}
+\begin{itemize}
+    \itemsep -3pt {}
+     \item Skillfully contributed to a range of projects, specializing in virtual reality and mixed reality development.
+     \item Currently developing a game for Apple VisionOS in VR and MR with Unity Game Engine.
+     \item Focused on a sniper-based game, merging immersive experiences with innovative gameplay mechanics.
+\end{itemize}
+
+\textbf{Software Developer Intern} \hfill Jan 2023 - June 2023\\
+Samyak Infotech Pvt. Ltd. \hfill \textit{Ahmedabad}
+\begin{itemize}
+    \itemsep -3pt {}
+     \item Developed expertise in .NET technology for web API development.
+     \item Designed and developed a captivating 3D endless runner game with Unity.
+     \item Revolutionized gameplay through integrated mobile gesture and dynamic AR face detection.
+     \item Orchestrated successful deployment of the game on the Google Play Store platform.
+\end{itemize}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	PROJECTS
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{PROJECTS}
+
+\textbf{Unity CI/CD Pipeline Configurator \& Code Generator (Web Tool)}
+\begin{itemize}
+    \itemsep -3pt {}
+     \item Architected a specialized web tool using \textbf{modern AI coding tools} to eliminate manual build and store deployment bottlenecks for Unity mobile games.
+     \item Automated multi-platform outputs: generates testing \textbf{.apk} builds, store-ready \textbf{.aab} bundles, and secondary \textbf{Xcode build pipeline} compiling Unity exports into signed iOS \textbf{.ipa} packages.
+     \item Implemented \textbf{post-build automated deployment}: auto-uploads .aab to \textbf{Google Play (Internal Testing)} via GCP service accounts (\texttt{google-play-upload.js}) and deploys iOS packages to \textbf{Apple TestFlight} via App Store Connect API.
+     \item Integrated automated live store version queries (\texttt{get-play-store-version.js} \& \texttt{get-app-store-version.js}) for automatic build and version code increments.
+     \item Built an interactive step-by-step wizard with visual drag-and-drop repository setup instructions.
+\end{itemize}
+
+\textbf{AI-Driven Mixed Reality Project (Unreal Engine)}
+\begin{itemize}
+    \itemsep -3pt {}
+     \item Developed a 3D AI-powered human character capable of interview-style and conversational interactions.
+     \item Implemented interactive dialogue systems using Blueprint Visual Scripting.
+     \item Integrated real-time AI responses to create natural conversational flow.
+     \item Focused on user interaction, immersion, and mixed-reality experience design.
+\end{itemize}
+
+\textbf{Game Reskinning \& Customization Projects (Unity)}
+\begin{itemize}
+    \itemsep -3pt {}
+     \item Reskinned and customized multiple mobile games while retaining core mechanics:
+     \begin{itemize}
+         \item \textbf{Choco Crunch} -- Match-3 game
+         \item \textbf{Sphinx Bubble Blast} -- Bubble shooter game
+         \item \textbf{Fastlane Racing} -- 3D racing game
+         \item \textbf{Challas Aath} -- Offline Indian Ludo game
+     \end{itemize}
+     \item Redesigned UI/UX, enhanced visuals, and improved gameplay logic and performance.
+     \item Integrated Firebase backend services, Ads monetization, Analytics, and Push Notifications.
+\end{itemize}
+
+\textbf{Housie (Tambola) Multiplayer Game} \hfill \textit{Unity, C\#, Node.js, Socket.io, Redis, PostgreSQL}
+\begin{itemize}
+    \itemsep -3pt {}
+     \item Developed a cross-platform multiplayer game featuring dynamic ticket generation, synchronized live number calling, and deep-link room invites.
+     \item Engineered the entire real-time backend using \textbf{AI tools} (Node.js, Express, Socket.io, Redis) with distributed table locking and queue workers.
+     \item Implemented server-side anti-cheat claim validation and Google Play / Apple App Store IAP receipt verification.
+\end{itemize}
+
+\textbf{Sniper-based Game for Apple VisionOS --- Unity Game Engine.} \\
+In my solo endeavor, I spearheaded the development of a sniper-based game exclusively designed for Apple VisionOS, blending elements of VR and MR. Utilizing the Unity Game Engine, I navigated the intricacies of this cutting-edge platform, crafting immersive gaming experiences.
+
+\textbf{Endless Runner Game (Temple Run-inspired) --- Unity Game Engine.} \\
+I single-handedly conceptualized, developed, and deployed a 3D endless runner game on the Google Play Store. I crafted captivating animations and integrated mobile gestures tailored for Android devices, introducing innovative AR face detection mechanics.
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{EDUCATION}
+
+\textbf{Bachelor of Technology - Information Technology} \hfill 2019 - 2023\\
+Sagar Institute of Research and Technology, Bhopal.
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	TOOLS
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{TOOLS}
+
+\begin{itemize}
+    \itemsep -3pt {}
+     \item Unity Game Engine.
+     \item Unreal Engine
+     \item Google Play Console
+     \item App Store Connect
+     \item Xcode.
+     \item Visual Studio.
+     \item Postman
+     \item GitLab CI \& GitHub Actions
+     \item Google Cloud Platform (GCP)
+     \item AI Coding Tools
+\end{itemize}
+
+\end{rSection}
+
+\end{document}
